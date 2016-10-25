@@ -11,6 +11,6 @@ app.service("MainService", ["$rootScope", function($rootScope) {
         console.log(this.quiz, `Cache size: ${this.quiz.length}`)
     };
 
-    // $rootScope.$on("savequiz", this.SaveQuiz);
+    // grab whatever is in local storage
     $rootScope.$on("restorequiz", this.restoreQuiz());
 }]);
