@@ -1,0 +1,47 @@
+<!-- question and answer form -->
+<div class="row main-content">
+    <div class="col-md-12">
+        <h2>Enter Question/Answers below</h2>
+        <form ng-submit="submit(view.entry.question, view.entry.answer)">
+            <div class="form-group row">
+                <label for="question-input" class="col-xs-2 col-form-label">Question: </label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" placeholder="Question" ng-model="view.entry.question">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="answer-input" class="col-xs-2 col-form-label">Answer: </label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="search" placeholder="Answer" ng-model="view.entry.answer">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- quiz content -->
+<div class="row main-content">
+    <div class="col-md-12">
+
+        <!-- questions/answers -->
+        <h2 class="quiz-header">Quiz</h2><button type="button" class="btn btn-success btn-sm" ng-click="saveQuiz(view.quiz)" ng-hide="view.canEdit">Save your quiz</button>
+        <p class="failure" ng-show="view.fail.isTrue">{{view.fail.message}}</p>
+        <p class="success" ng-show="view.success.isTrue">{{view.success.message}}</p>
+        <ul class="list-group" ng-hide="view.canEdit">
+            <li href="#" class="list-group-item list-group-item-action" ng-repeat="entry in view.quiz track by $index">
+              <h5 class="list-group-item-heading question">{{entry.number}}. {{entry.question}}</h5>
+              <p class="list-group-item-text answer">{{entry.answer}}</p>
+              <button type="button" class="btn btn-warning btn-sm" ng-click="edit($index)">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm" ng-click="delete(entry.number)">Delete</button>
+            </li>
+        </ul>
+
+        <!-- edit form -->
+        <div ng-show="view.canEdit">
+            <input class="form-control list-group-item" type="text" ng-model="view.editEntry.question">
+            <input class="form-control list-group-item" type="text" ng-model="view.editEntry.answer">
+            <button type="button" class="btn btn-warning btn-sm" ng-click="saveEdit(entry)" ng-show="view.canEdit">Save</button>
+        <div>
+    </div>
+</div>

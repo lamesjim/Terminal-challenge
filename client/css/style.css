@@ -1,0 +1,20 @@
+.main-content {
+    margin-top: 25px;
+}
+
+.quiz-header {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.answer {
+    padding: 10px 0 10px 0;
+}
+
+.success {
+    color: #00ba2b;
+}
+
+.failure {
+    color: #ea0000;
+}
