@@ -10,4 +10,4 @@
 
 > Will create and populate a `node_modules/` folder
 
-4. Run `npm start`.
+4. Run `npm start` and visit `localhost:3000` in your browser.
