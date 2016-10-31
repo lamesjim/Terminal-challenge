@@ -59,6 +59,7 @@ app.controller("MainController", ["$scope", "MainService", function($scope, Main
                     return reject(new Error('Quiz randomly failed to save'));
                 }
                 // pretend the save succeeded
+                MainService.saveQuiz(quiz);
                 return resolve('Save successful');
             }, Math.random() * 1000);
         })
@@ -67,7 +68,6 @@ app.controller("MainController", ["$scope", "MainService", function($scope, Main
                     $scope.view.fail.isTrue = false;
                     $scope.view.success.isTrue = true;
                 });
-                MainService.saveQuiz(quiz);
                 console.log(val);
         })
         .catch(err => {
