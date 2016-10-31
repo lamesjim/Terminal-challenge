@@ -21,7 +21,7 @@ app.controller("MainController", ["$scope", "MainService", function($scope, Main
             }
         }
         // update question numbers
-        $scope.view.quiz.map( (el, idx) => {
+        $scope.view.quiz.map((el, idx) => {
             el.number = idx + 1;
         });
     };
@@ -45,26 +45,37 @@ app.controller("MainController", ["$scope", "MainService", function($scope, Main
     $scope.view.success.isTrue = false;
     $scope.view.success.message = "Saved successfully";
 
-    $scope.saveQuiz = function (quiz) {
+    $scope.trySave = function (quiz) {
+        if (!$scope.view.canEdit) {
+            saveQuiz(quiz);
+        }
+    };
+
+    function saveQuiz (quiz) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (Math.random() < 0.1) {
                     // pretend the save failed
-                    $scope.$apply(function() {
-                        $scope.view.fail.isTrue = true;
-                        $scope.view.success.isTrue = false;
-                    });
                     return reject(new Error('Quiz randomly failed to save'));
                 }
                 // pretend the save succeeded
+                return resolve('Save successful');
+            }, Math.random() * 1000);
+        })
+        .then(val => {
                 $scope.$apply(function() {
                     $scope.view.fail.isTrue = false;
                     $scope.view.success.isTrue = true;
                 });
-
                 MainService.saveQuiz(quiz);
-                return resolve();
-            }, Math.random() * 1000);
-        });
-    }
+                console.log(val);
+        })
+        .catch(err => {
+                $scope.$apply(function() {
+                    $scope.view.fail.isTrue = true;
+                    $scope.view.success.isTrue = false;
+                });
+                console.log(err);
+            });
+        }
 }]);

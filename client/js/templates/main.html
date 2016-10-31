@@ -25,7 +25,7 @@
     <div class="col-md-12">
 
         <!-- questions/answers -->
-        <h2 class="quiz-header">Quiz</h2><button type="button" class="btn btn-success btn-sm" ng-click="saveQuiz(view.quiz)" ng-hide="view.canEdit">Save your quiz</button>
+        <h2 class="quiz-header">Quiz</h2><button type="button" class="btn btn-success btn-sm" ng-click="trySave(view.quiz)" ng-hide="view.canEdit">Save your quiz</button>
         <p class="failure" ng-show="view.fail.isTrue">{{view.fail.message}}</p>
         <p class="success" ng-show="view.success.isTrue">{{view.success.message}}</p>
         <ul class="list-group" ng-hide="view.canEdit">
