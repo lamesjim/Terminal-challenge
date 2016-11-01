@@ -63,12 +63,12 @@ app.controller("MainController", ["$scope", "MainService", function($scope, Main
                 return resolve('Save successful');
             }, Math.random() * 1000);
         })
-        .then(val => {
+        .then(result => {
                 $scope.$apply(function() {
                     $scope.view.fail.isTrue = false;
                     $scope.view.success.isTrue = true;
                 });
-                console.log(val);
+                console.log(result);
         })
         .catch(err => {
                 $scope.$apply(function() {
